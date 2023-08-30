@@ -22,3 +22,11 @@ resource "aws_subnet" "private-subnet" {
     Name = "${var.prefix}-vault-private-${var.az}"
   }
 }
+
+resource "aws_internet_gateway" "vault-ig" {
+  vpc_id = aws_vpc.vault-vpc.id
+
+  tags = {
+    Name = "${var.prefix}-internet-gateway"
+  }
+}
