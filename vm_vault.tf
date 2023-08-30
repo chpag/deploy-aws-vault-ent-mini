@@ -47,6 +47,7 @@ resource "aws_instance" "vault-ent_vm" {
   key_name      = var.key_name
 
   vpc_security_group_ids = [aws_security_group.vault_sg.id]
+  user_data     = var.userdata_script
 
   tags = {
     Name = "${var.prefix}-vault-ent-vm"
