@@ -30,7 +30,7 @@ locals {
     "${path.module}/templates/install_vault.sh.tpl",
     {
       vault_version           = var.vault_version
-      vault_license_content      = var.vault_license_content
+      vault_licence_content      = var.vault_licence_content
     }
   )
 }
