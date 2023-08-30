@@ -1,6 +1,6 @@
 module "vpc" {
   source                 = "terraform-aws-modules/vpc/aws"
-  name                   = "${var.resource_name_prefix}-vault"
+  name                   = "${var.prefix}-vault"
   cidr                   = var.vpc_cidr
   azs                    = var.azs
   enable_nat_gateway     = true
