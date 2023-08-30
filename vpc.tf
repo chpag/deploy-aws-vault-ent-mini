@@ -4,7 +4,7 @@ module "vpc" {
   name = "${var.prefix}-vault-vpc"
   cidr = var.public_subnet_cidr
 
-  azs             = [va.az]
+  azs             = [var.az]
   private_subnets = [var.private_subnet_cidr]
   public_subnets  = [var.public_subnet_cidr]
 
