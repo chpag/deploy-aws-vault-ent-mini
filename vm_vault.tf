@@ -30,7 +30,7 @@ resource "aws_instance" "vault-ent_vm" {
   key_name      = var.key_name
 
   vpc_security_group_ids = [aws_security_group.vault_sg.id]
-  user_data     = base64encode(local.vault_user_data)
+  user_data_base64     = base64encode(local.vault_user_data)
   tags = {
     Name = "${var.prefix}-vault-ent-vm"
     Owner = var.owner
