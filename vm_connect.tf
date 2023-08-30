@@ -14,13 +14,24 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
+data "aws_subnets" "public-subnet" {
+  filter {
+    name   = "vpc-id"
+    values = [module.vpc.vpc_id]
+  }
+  filter {
+    name   = "tag:Name"
+    values = ["${var.prefix}-vault-public-${var.azs[0]}"]
+  }
+}
+
 resource "aws_instance" "vault_cli_vm" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  subnet_id     = aws_subnet.public-subnet.id
+  subnet_id     = data.aws_subnets.public-asubnet.ids[0]
   key_name      = var.key_name
 
-  vpc_security_group_ids = [aws_vpc.vault-vpc.id]
+  vpc_security_group_ids = [aws_security_group.vault_sg.id]
 
   associate_public_ip_address = true
 
