@@ -1,6 +1,6 @@
 resource "aws_security_group" "vault_sg" {
   name   = "${var.prefix}-vault"
-  vpc_id = module.vpc.vpc_id
+  vpc_id = aws_vpc.vault-vpc.vpc_id
 
   tags = merge(
     { Name = "${var.prefix}-vault-sg" },
