@@ -66,3 +66,13 @@ variable "tags" {
   description = "Tags for resources"
   default     = {}
 }
+
+variable "s3_bucket_vault_license" {
+  description = "S3 bucket ID containing Vault license"
+}
+
+variable "vault_licence_name" {
+  description = "Name of Vault license file"
+}
+
+
