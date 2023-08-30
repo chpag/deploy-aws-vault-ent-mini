@@ -40,7 +40,12 @@ resource "aws_route_table" "vault-int-route" {
   }
 }
 
-resource "aws_route_table_association" "hashicat" {
+resource "aws_route_table_association" "vault-rt-public" {
   subnet_id      = aws_subnet.public-subnet.id
+  route_table_id = aws_route_table.vault-int-route.id
+}
+
+resource "aws_route_table_association" "vault-rt-private" {
+  subnet_id      = aws_subnet.private-subnet.id
   route_table_id = aws_route_table.vault-int-route.id
 }
