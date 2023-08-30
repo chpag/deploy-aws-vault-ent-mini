@@ -29,7 +29,7 @@ locals {
   vault_user_data = templatefile(
     "${path.module}/templates/install_vault.sh.tpl",
     {
-      region                  = var.aws_region
+      region                  = var.region
       name                    = var.prefix
       vault_version           = var.vault_version
       s3_bucket_vault_license = aws_s3_bucket.vault_license_bucket.id
