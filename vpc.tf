@@ -1,13 +1,24 @@
+resource "aws_vpc" "vault-vpc" {
+  cidr_block = var.vpc_cidr
 
-module "vpc" {
-  source                 = "terraform-aws-modules/vpc/aws"
-  name                   = "${var.prefix}-vault"
-  cidr                   = var.vpc_cidr
-  azs                    = [ var.az ]
-  enable_nat_gateway     = true
-  one_nat_gateway_per_az = true
-  private_subnets        = [ var.private_subnet_cidr ]
-  public_subnets         = [ var.public_subnet_cidr ]
+}
 
-  tags = var.tags
+resource "aws_subnet" "public-subnet" {
+  vpc_id     = aws_vpc.vault-vpc.id
+  cidr_block = var.public_subnet_cidr
+  availability_zone = var.az
+
+  tags = {
+    Name = "${var.prefix}-vault-public-${var.az}"
+  }
+}
+
+resource "aws_subnet" "private-subnet" {
+  vpc_id     = aws_vpc.vault-vpc.id
+  cidr_block = var.private_subnet_cidr 
+  availability_zone = var.az
+
+  tags = {
+    Name = "${var.prefix}-vault-private-${var.az}"
+  }
 }

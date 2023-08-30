@@ -14,17 +14,6 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-data "aws_subnets" "public-subnet" {
-  filter {
-    name   = "vpc-id"
-    values = [module.vpc.vpc_id]
-  }
-  filter {
-    name   = "tag:Name"
-    values = ["${var.prefix}-vault-public-${var.az}"]
-  }
-}
-
 locals {
   vault_user_data = templatefile(
     "${path.module}/templates/install_vault.sh.tpl",
@@ -37,7 +26,7 @@ locals {
 resource "aws_instance" "vault-ent_vm" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  subnet_id     = data.aws_subnets.public-subnet.ids[0]
+  subnet_id     = aws_subnet.private-subnet.id
   key_name      = var.key_name
 
   vpc_security_group_ids = [aws_security_group.vault_sg.id]
