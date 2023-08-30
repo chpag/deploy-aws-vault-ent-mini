@@ -9,5 +9,5 @@ module "vpc" {
   private_subnets        = [ var.private_subnet_cidr ]
   public_subnets         = [ var.public_subnet_cidr ]
 
-  tags = var.vpc_tags
+  tags = var.tags
 }
