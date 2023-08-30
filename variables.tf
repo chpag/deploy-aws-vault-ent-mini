@@ -67,10 +67,4 @@ variable "tags" {
   default     = {}
 }
 
-variable "vault_license_name" {
-  type        = string
-  description = "The file name for the Vault license file as it will be stored in S3"
-  default     = "vault.hclic"
-}
-
 
