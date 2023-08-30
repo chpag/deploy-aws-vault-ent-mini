@@ -32,7 +32,7 @@ locals {
       region                  = var.aws_region
       name                    = var.prefix
       vault_version           = var.vault_version
-      s3_bucket_vault_license = var.aws_bucket_vault_license
+      s3_bucket_vault_license = aws_s3_bucket.vault_license_bucket.id
       vault_license_name      = var.vault_license_name
       secrets_manager_arn     = var.secrets_manager_arn
     }
