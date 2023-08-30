@@ -61,8 +61,8 @@ variable "instance_type" {
   default = "m5.xlarge"
 }
 
-variable "vpc_tags" {
+variable "tags" {
   type        = map(string)
-  description = "Tags for VPC resources"
+  description = "Tags for resources"
   default     = {}
 }
