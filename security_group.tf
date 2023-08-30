@@ -4,7 +4,7 @@ resource "aws_security_group" "vault_sg" {
 
   tags = merge(
     { Name = "${var.prefix}-vault-sg" },
-    var.tags,
+    var.tags
   )
 }
 
