@@ -21,7 +21,7 @@ data "aws_subnets" "public-subnet" {
   }
   filter {
     name   = "tag:Name"
-    values = ["${var.prefix}-vault-public-${var.azs[0]}"]
+    values = ["${var.prefix}-vault-public-${var.az}"]
   }
 }
 
