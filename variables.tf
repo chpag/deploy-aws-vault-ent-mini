@@ -70,3 +70,9 @@ variable "instance_type" {
   description = "EC2 instance type"
   default = "m5.xlarge"
 }
+
+variable "vpc_tags" {
+  type        = map(string)
+  description = "Tags for VPC resources"
+  default     = {}
+}
