@@ -27,10 +27,10 @@ data "aws_subnets" "public-subnet" {
 
 locals {
   vault_user_data = templatefile(
-    var.user_supplied_userdata_path != null ? var.user_supplied_userdata_path : "${path.module}/templates/install_vault.sh.tpl",
+    "${path.module}/templates/install_vault.sh.tpl",
     {
       region                  = var.aws_region
-      name                    = var.resource_name_prefix
+      name                    = var.prefix
       vault_version           = var.vault_version
       kms_key_arn             = var.kms_key_arn
       s3_bucket_vault_license = var.aws_bucket_vault_license
@@ -47,8 +47,7 @@ resource "aws_instance" "vault-ent_vm" {
   key_name      = var.key_name
 
   vpc_security_group_ids = [aws_security_group.vault_sg.id]
-  user_data     = var.userdata_script
-
+  user_data     = base64encode(local.vault_user_data)
   tags = {
     Name = "${var.prefix}-vault-ent-vm"
     Owner = var.owner
