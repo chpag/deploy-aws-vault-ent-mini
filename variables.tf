@@ -7,9 +7,9 @@ variable "region" {
   default     = "eu-west-3"
 }
 
-variable "azs" {
-  description = "The az list where the resources are created."
-  default     = [ "eu-west-3a" ]
+variable "az" {
+  description = "The az where the resources are created."
+  default     = "eu-west-3a"
 }
 
 variable "owner" {
@@ -35,24 +35,14 @@ variable "allowed_inbound_cidrs_ssh" {
   default = null
 }
 
-variable "private_subnet_cidrs" {
-  description = "CIDR blocks for private subnets"
-  type        = list(string)
-  default = [
-    "10.0.0.0/19",
-    "10.0.32.0/19",
-    "10.0.64.0/19",
-  ]
+variable "private_subnet_cidr" {
+  description = "CIDR blocks for private subnet"
+  default = "10.0.0.0/19"
 }
 
-variable "public_subnet_cidrs" {
-  description = "CIDR blocks for public subnets"
-  type        = list(string)
-  default = [
-    "10.0.128.0/20",
-    "10.0.144.0/20",
-    "10.0.160.0/20",
-  ]
+variable "public_subnet_cidr" {
+  description = "CIDR blocks for public subnet"
+  default = "10.0.128.0/20"
 }
 
 variable "vpc_cidr" {
