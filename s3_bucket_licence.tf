@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "vault_license_bucket" {
 
   force_destroy = true
 
-  tags = var.common_tags
+  tags = var.tags
 }
 
 resource "aws_s3_bucket_ownership_controls" "vault_license_bucket_own_ctrl" {
