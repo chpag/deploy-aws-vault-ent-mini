@@ -1,4 +1,4 @@
-resource "aws_security_group" "vault" {
+resource "aws_security_group" "vault_sg" {
   name   = "${var.prefix}-vault"
   vpc_id = module.vpc.vpc_id
 
