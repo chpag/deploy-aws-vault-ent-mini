@@ -31,7 +31,7 @@ resource "aws_security_group_rule" "vault_internal_raft" {
 resource "aws_security_group_rule" "vault_ssh_inbound" {
   count             = var.allowed_inbound_cidrs_ssh != null ? 1 : 0
   description       = "Allow specified CIDRs SSH access to Vault nodes"
-  security_group_id = aws_security_group.vault.id
+  security_group_id = aws_security_group.vault_sg.id
   type              = "ingress"
   from_port         = 22
   to_port           = 22
@@ -41,7 +41,7 @@ resource "aws_security_group_rule" "vault_ssh_inbound" {
 
 resource "aws_security_group_rule" "vault_outbound" {
   description       = "Allow Vault nodes to send outbound traffic"
-  security_group_id = aws_security_group.vault.id
+  security_group_id = aws_security_group.vault_sg.id
   type              = "egress"
   from_port         = 0
   to_port           = 0
