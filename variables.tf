@@ -67,10 +67,6 @@ variable "tags" {
   default     = {}
 }
 
-variable "s3_bucket_vault_license" {
-  description = "S3 bucket ID containing Vault license"
-}
-
 variable "vault_license_name" {
   type        = string
   description = "The file name for the Vault license file as it will be stored in S3"
