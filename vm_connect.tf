@@ -3,7 +3,7 @@ locals {
     "${path.module}/templates/install_vault-ent_bin.sh.tpl",
     {
       vault_version    = var.vault_version
-      vault_ip         = var.vault_ip
+      vault_server     = aws_instance.vault_server_vm.private_dns
     }
   )
 }
