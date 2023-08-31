@@ -15,14 +15,15 @@ data "aws_ami" "ubuntu" {
 }
 
 locals {
-  vault_user_data = templatefile(
-    "${path.module}/templates/install_vault.sh.tpl",
+  vault_server_user_data = templatefile(
+    "${path.module}/templates/install_vault-ent_server.sh.tpl",
     {
       vault_version           = var.vault_version
-      vault_licence_content      = var.vault_licence_content
+      vault_licence_content   = var.vault_licence_content
     }
   )
 }
+
 resource "aws_instance" "vault-ent_vm" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
@@ -30,7 +31,7 @@ resource "aws_instance" "vault-ent_vm" {
   key_name      = var.key_name
 
   vpc_security_group_ids = [aws_security_group.vault_sg.id]
-  user_data_base64     = base64encode(local.vault_user_data)
+  user_data_base64     = base64encode(local.vault_server_user_data)
   tags = {
     Name = "${var.prefix}-vault-ent-vm"
     Owner = var.owner
