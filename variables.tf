@@ -27,7 +27,6 @@ variable "vault_version" {
 
 variable "key_name" {
   description = "key pair to use for SSH access to instance"
-  default = null
 }
 
 variable "allowed_inbound_cidrs_ssh" {
@@ -49,11 +48,6 @@ variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string
   default     = "10.0.0.0/16"
-}
-
-variable "allowed_inbound_cidrs_lb" {
-  description = "List of CIDR blocks to permit inbound traffic from to load balancer"
-  default = null
 }
 
 variable "instance_type" {
