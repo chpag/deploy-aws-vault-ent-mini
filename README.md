@@ -1,29 +1,9 @@
-Vault Enterprise AWS Module
-This is a Terraform module for provisioning Vault Enterprise with integrated storage on AWS. This module defaults to setting up a cluster with 5 Vault nodes (as recommended by the Vault with Integrated Storage Reference Architecture).
+# Vault Enterprise AWS Mini Deployments
+This is a Terraform Code for provisioning a mini Vault Enterprise (1 node) with integrated storage on AWS. 
 
-About This Module
-This module implements the Vault with Integrated Storage Reference Architecture on AWS using the Enterprise version of Vault 1.8+.
 
-How to Use This Module
-Ensure your AWS credentials are configured correctly and have permission to use the following AWS services:
-
-Amazon Certificate Manager (ACM)
-Amazon EC2
-Amazon Elastic Load Balancing (ALB)
-AWS Identity & Access Management (IAM)
-AWS Key Management System (KMS)
-Amazon Simple Storage Service (S3)
-Amazon Secrets Manager
-AWS Systems Manager Session Manager (optional - used to connect to EC2 instances with session manager using the AWS CLI)
-Amazon VPC
-This module assumes you have an existing VPC along with an AWS secrets manager that contains TLS certs for the Vault nodes and load balancer. If you do not, you may use the following quickstart to deploy these resources.
-
-To deploy into an existing VPC, ensure the following components exist and are routed to each other correctly:
-
-Three public subnets
-Three NAT gateways (one in each public subnet)
-Three private subnets
 # deploy-aws-vault-ent-mini
+Hera are the variables availables
 
 variable "prefix" {
   description = "This prefix will be included in the name of most resources."
