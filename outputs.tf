@@ -4,5 +4,5 @@ output "key_name" {
 }
 
 output "vault_cli-vm_ip" {
-  value = aws_instance.
+  value = aws_instance.vault-cli_vm.public_dns
 }
