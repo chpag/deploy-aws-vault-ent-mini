@@ -12,5 +12,5 @@ timedatectl set-timezone UTC
 
 echo "Setup Vault profile"
 cat <<PROFILE | sudo tee /etc/profile.d/vault.sh
-export VAULT_ADDR="http://${vault_ip}:8200"
+export VAULT_ADDR="http://${vault_server}:8200"
 PROFILE
