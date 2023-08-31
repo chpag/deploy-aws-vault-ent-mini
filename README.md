@@ -23,6 +23,12 @@ A second Server with public-ip is started and preconfigured to access vault
 ```bash
 ssh -i "{$var_keyname}" ubuntu@${vault-cli-vm}
 ```
+
+ - Verify the connectiviry with Vault Server.
+```bash
+vault status
+
+```
  - To initialize the Vault cluster, run the following commands:
 
 ```bash
