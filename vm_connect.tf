@@ -17,7 +17,7 @@ resource "aws_instance" "vault-cli_vm" {
   vpc_security_group_ids = [aws_security_group.vault_sg.id]
 
   associate_public_ip_address = true
-  user_data_base64 = base64encode(vault_bin_user_data)
+  user_data_base64 = base64encode(local.vault_bin_user_data)
 
   tags = {
     Name = "${var.prefix}-vault-cli-vm"
